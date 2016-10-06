@@ -11,19 +11,28 @@
 <body class="container">
 	
 	<div class="row">
+		<h2>Gender vs. Survival</h2>
 		<div id="chart1"></div>
+	</div>
+
+	<div class="row">
+		<div id="chart2"></div>
+	</div>
+
+	<div class="row">
+		<div id="chart3"></div>
 	</div>
 	<script type="text/javascript">
 	var width = 800,
 		height = 600;
 	var svg1 = dimple.newSvg('#chart1',width,height);
 	d3.csv("data/titanic_data.csv", function(d){
-		var chart = new dimple.chart(svg1, d);
-		chart.addCategoryAxis('x','Sex');
-		chart.addMeasureAxis('y','Survived');
-		chart.addLegend(65, 10, 510, 20, "right");
-		console.log(d);
-		chart.draw();
+		var myChart = new dimple.chart(svg1, d);
+		var x = myChart.addCategoryAxis('x','Sex');
+		var y = myChart.addMeasureAxis('y','Survived');
+		var s = myChart.addSeries('Sex', dimple.plot.bar);
+		myChart.addLegend(65, 10, 510, 20, "right");
+		myChart.draw();
 	});
 
   </script>
