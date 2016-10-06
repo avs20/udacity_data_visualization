@@ -8,3 +8,6 @@ For this project, I will use dimple.js for data visualization. And I will exclud
 And I would recode the NaN of Age variable to 999 mainly to see if those missing value have an indication on Survived outcome.
 
 I then decide to explore the variables [Pclass, Sex, Age, SibSp, Parch, Fair, Embarked] to investigate the correlation with outcome variable Survived.
+
+## Gender vs. Survival
+The first chart I investigate is to compare 
