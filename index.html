@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Titanic Data Exploration</title>
-    <script src="https://www.d3js.org/d3.v3.min.js"></script>
-    <script src="https://www.dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+    <script src="d3.min.js"></script>
+    <script src="dimple.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
 
@@ -22,10 +22,20 @@
 	var width = 800,
 		height = 600;
 	var svg1 = dimple.newSvg('#chart1',width,height);
-	d3.csv("data/titanic_data.csv", function(d){
+	d3.csv("data/titanic_data.csv", function(data){
+		
+		data.forEach(function (d){
+			
+			d['Count']=1;
+
+		})
+		
+		console.log(data)
+		var d = data;
+		
 		var myChart = new dimple.chart(svg1, d);
-		var x = myChart.addCategoryAxis('x','Sex');
-		var y = myChart.addMeasureAxis('y','Survived');
+		var x = myChart.addCategoryAxis('x',['Sex','Survived']);
+		var y = myChart.addMeasureAxis('y','Count');
 		var s = myChart.addSeries('Sex', dimple.plot.bar);
 		myChart.addLegend(65, 10, 510, 20, "right");
 		myChart.draw();
